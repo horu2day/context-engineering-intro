@@ -1,59 +1,66 @@
-### 🔄 Project Awareness & Context
-- **Always read `PLANNING.md`** at the start of a new conversation to understand the project's architecture, goals, style, and constraints.
-- **Check `TASK.md`** before starting a new task. If the task isn’t listed, add it with a brief description and today's date.
-- **Use consistent naming conventions, file structure, and architecture patterns** as described in `PLANNING.md`.
-- **Use venv_linux** (the virtual environment) whenever executing Python commands, including for unit tests.
+### 🔄 프로젝트 인식 및 컨텍스트
 
-### 🧱 Code Structure & Modularity
-- **Never create a file longer than 500 lines of code.** If a file approaches this limit, refactor by splitting it into modules or helper files.
-- **Organize code into clearly separated modules**, grouped by feature or responsibility.
-  For agents this looks like:
-    - `agent.py` - Main agent definition and execution logic 
-    - `tools.py` - Tool functions used by the agent 
-    - `prompts.py` - System prompts
-- **Use clear, consistent imports** (prefer relative imports within packages).
-- **Use clear, consistent imports** (prefer relative imports within packages).
-- **Use python_dotenv and load_env()** for environment variables.
+- **새로운 대화를 시작할 때 항상 `PLANNING.md`를 읽으세요.** 프로젝트의 아키텍처, 목표, 스타일, 제약 조건을 이해할 수 있습니다.
+- **새 작업을 시작하기 전에 `TASK.md`를 확인하세요.** 작업이 목록에 없으면 간단한 설명과 오늘 날짜를 추가하세요.
+- **`PLANNING.md`에 설명된 명명 규칙, 파일 구조, 아키텍처 패턴을 일관되게 사용하세요.**
+- **Python 명령을 실행할 때(유닛 테스트 포함) 항상 venv_linux(가상 환경)를 사용하세요.**
 
-### 🧪 Testing & Reliability
-- **Always create Pytest unit tests for new features** (functions, classes, routes, etc).
-- **After updating any logic**, check whether existing unit tests need to be updated. If so, do it.
-- **Tests should live in a `/tests` folder** mirroring the main app structure.
-  - Include at least:
-    - 1 test for expected use
-    - 1 edge case
-    - 1 failure case
+### 🧱 코드 구조 및 모듈화
 
-### ✅ Task Completion
-- **Mark completed tasks in `TASK.md`** immediately after finishing them.
-- Add new sub-tasks or TODOs discovered during development to `TASK.md` under a “Discovered During Work” section.
+- **하나의 파일이 500줄을 넘지 않도록 하세요.** 파일이 이 한계에 가까워지면 모듈이나 헬퍼 파일로 분리하여 리팩터링하세요.
+- **기능 또는 책임별로 그룹화된 명확하게 분리된 모듈로 코드를 구성하세요.**
+  에이전트의 경우 예시는 다음과 같습니다:
+  - `agent.py` - 메인 에이전트 정의 및 실행 로직
+  - `tools.py` - 에이전트에서 사용하는 도구 함수
+  - `prompts.py` - 시스템 프롬프트
+- **명확하고 일관된 import를 사용하세요** (패키지 내에서는 상대 import 권장).
+- **python_dotenv와 load_env()를 사용하여 환경 변수를 관리하세요.**
 
-### 📎 Style & Conventions
-- **Use Python** as the primary language.
-- **Follow PEP8**, use type hints, and format with `black`.
-- **Use `pydantic` for data validation**.
-- Use `FastAPI` for APIs and `SQLAlchemy` or `SQLModel` for ORM if applicable.
-- Write **docstrings for every function** using the Google style:
+### 🧪 테스트 및 신뢰성
+
+- **새로운 기능(함수, 클래스, 라우트 등)을 만들 때마다 Pytest 유닛 테스트를 작성하세요.**
+- **로직을 업데이트한 후에는 기존 유닛 테스트가 수정이 필요한지 확인하고, 필요하다면 업데이트하세요.**
+- **테스트는 메인 앱 구조를 반영하는 `/tests` 폴더에 위치해야 합니다.**
+  - 최소한 다음을 포함하세요:
+    - 정상 동작 테스트 1개
+    - 엣지 케이스 테스트 1개
+    - 실패 케이스 테스트 1개
+
+### ✅ 작업 완료
+
+- **작업을 완료하면 즉시 `TASK.md`에 완료 표시를 하세요.**
+- 개발 중 발견된 새로운 하위 작업이나 TODO는 “Discovered During Work” 섹션에 추가하세요.
+
+### 📎 스타일 및 규칙
+
+- **Python을 기본 언어로 사용하세요.**
+- **PEP8을 따르고, 타입 힌트를 사용하며, `black`으로 포맷팅하세요.**
+- **데이터 검증에는 `pydantic`을 사용하세요.**
+- API는 `FastAPI`, ORM은 필요시 `SQLAlchemy` 또는 `SQLModel`을 사용하세요.
+- **모든 함수에 Google 스타일의 docstring을 작성하세요:**
+
   ```python
   def example():
       """
-      Brief summary.
+      간단한 요약.
 
       Args:
-          param1 (type): Description.
+          param1 (type): 설명.
 
       Returns:
-          type: Description.
+          type: 설명.
       """
   ```
 
-### 📚 Documentation & Explainability
-- **Update `README.md`** when new features are added, dependencies change, or setup steps are modified.
-- **Comment non-obvious code** and ensure everything is understandable to a mid-level developer.
-- When writing complex logic, **add an inline `# Reason:` comment** explaining the why, not just the what.
+### 📚 문서화 및 설명성
 
-### 🧠 AI Behavior Rules
-- **Never assume missing context. Ask questions if uncertain.**
-- **Never hallucinate libraries or functions** – only use known, verified Python packages.
-- **Always confirm file paths and module names** exist before referencing them in code or tests.
-- **Never delete or overwrite existing code** unless explicitly instructed to or if part of a task from `TASK.md`.
+- **새 기능 추가, 의존성 변경, 설정 단계 수정 시 `README.md`를 업데이트하세요.**
+- **명확하지 않은 코드에는 주석을 추가하고, 중급 개발자가 이해할 수 있도록 하세요.**
+- 복잡한 로직에는 **무엇뿐만 아니라 왜 그런지 설명하는 `# Reason:` 인라인 주석을 추가하세요.**
+
+### 🧠 AI 행동 규칙
+
+- **누락된 컨텍스트를 추정하지 마세요. 확실하지 않으면 질문하세요.**
+- **존재하지 않는 라이브러리나 함수를 만들어내지 마세요.** 반드시 검증된 Python 패키지만 사용하세요.
+- **코드나 테스트에서 참조하기 전에 파일 경로와 모듈 이름이 실제로 존재하는지 항상 확인하세요.**
+- **명시적으로 지시받거나 `TASK.md`의 작업 일부가 아닌 한 기존 코드를 삭제하거나 덮어쓰지 마세요.**
